@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Tipo</th>
+          <th>Data</th>
+          <th>Nome</th>
+          <th>Valor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let despesa of despesas, let i = index">
+          <th><button class="btn btn-danger delete" (click)="delete(i)"><div class="glyphicon glyphicon-trash"></div></button></th>
+          <th>
+            <div *ngIf="despesa.tipo == 'Mercado'" class="glyphicon glyphicon-shopping-cart" ></div>
+            <div *ngIf="despesa.tipo == 'Lazer'" class="glyphicon glyphicon-knight" ></div>
+            <div *ngIf="despesa.tipo == 'Saúde'" class="glyphicon glyphicon-heart-empty" ></div>
+            {{despesa.tipo}}</th>
+          <th>{{despesa.data | amTimeAgo}}</th>
+          <th>{{despesa.nome}}</th>
+          <th>{{despesa.valor | currency:'R$ ':true:'1.2-2'}}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-primary" (click)="pageAdd()">
+    <div class="glyphicon glyphicon-plus"></div>
+    Adicionar despesa
+  </button>
+</div>  
